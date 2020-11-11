@@ -42,13 +42,14 @@ void setup() {
   
 }
 
-int velocidad = 85, delay1 = 28 , delay2 = 130;
+int velocidad = 100, delay1 = 13 , delay2 = 700;
 void loop() {
    
   valorSensorA = digitalRead(sensorA);
   valorSensorB = digitalRead(sensorB);
   valorSensorC = digitalRead(sensorC);
   valorSensorD = digitalRead(sensorD);
+
 
    if(valorSensorA == 1 && valorSensorB == 1 && valorSensorC == 1 && valorSensorD == 1){
 
@@ -58,37 +59,7 @@ void loop() {
       digitalWrite(motor22,LOW);
     
     }
-    else if(valorSensorA == 0 && valorSensorB == 0 && valorSensorC == 1 && valorSensorD == 0){
-        
-        Serial.println("Sensor C");
-        digitalWrite(motor11,LOW); 
-        digitalWrite(motor12,LOW);    
-        digitalWrite(motor21,LOW); 
-        digitalWrite(motor22,LOW);
-        
-        digitalWrite(motor21,HIGH); 
-        digitalWrite(motor22,LOW);  
-        analogWrite(pwmMotorA, velocidad);
-        
-        delay(delay2);
     
-      }
-      else if(valorSensorA == 0 && valorSensorB == 0 && valorSensorC == 0 && valorSensorD == 1){
-      
-        Serial.println("Sensor D");
-        digitalWrite(motor11,LOW); 
-        digitalWrite(motor12,LOW);    
-        digitalWrite(motor21,LOW); 
-        digitalWrite(motor22,LOW);
-        
-        digitalWrite(motor11,HIGH); 
-        digitalWrite(motor12,LOW);  
-        
-        analogWrite(pwmMotorB, velocidad);
-        
-        delay(delay2);
-      
-      }
    else if(valorSensorA == 1 
    && valorSensorB == 0 && valorSensorC == 0 && valorSensorD == 0
    ){  
@@ -132,6 +103,36 @@ void loop() {
       delay(delay1);
   
       
+      
+      } else if(valorSensorA == 0 && valorSensorB == 0 && valorSensorC == 1 && valorSensorD == 0){
+        
+        Serial.println("Sensor C");
+        digitalWrite(motor11,LOW); 
+        digitalWrite(motor12,LOW);    
+        digitalWrite(motor21,LOW); 
+        digitalWrite(motor22,LOW);
+        
+        digitalWrite(motor21,HIGH); 
+        digitalWrite(motor22,LOW);  
+        analogWrite(pwmMotorA, velocidad);
+        
+        delay(delay2);
+    
+      }
+      else if(valorSensorA == 0 && valorSensorB == 0 && valorSensorC == 0 && valorSensorD == 1){
+      
+        Serial.println("Sensor D");
+        digitalWrite(motor11,LOW); 
+        digitalWrite(motor12,LOW);    
+        digitalWrite(motor21,LOW); 
+        digitalWrite(motor22,LOW);
+        
+        digitalWrite(motor11,HIGH); 
+        digitalWrite(motor12,LOW);  
+        
+        analogWrite(pwmMotorB, velocidad);
+        
+        delay(delay2);
       
       }
       else{
